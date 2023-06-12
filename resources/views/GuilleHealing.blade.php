@@ -23,11 +23,6 @@
             </tr>
             @foreach($getMedico as $getMedico)
             <tr>
-                <td>
-                <h2>{{$getMedico->MATRICULA}}</h2>
-                <td>
-            </tr>
-            <tr>
                 <td class="fw-bold">{{$getMedico->MATRICULA}}</td>
                 <td class="fw-bold">{{$getMedico->Nombre}}</td>
                 <td class="fw-bold">{{$getMedico->Especialidad}}</td>
