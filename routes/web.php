@@ -22,7 +22,7 @@ use App\Http\Controllers\CrearEstudiosController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('welcome');
 });
 
 Route::resource('index', HospitalController::class);
@@ -35,3 +35,6 @@ Route::resource('pacientes', PacientesController::class);
 Route::resource('crearPacientes', CrearPacientesController::class);
 Route::get('GuilleHEaling',[GuilleController::class,'getImage']);
 Route::resource('GuilleHealing', GuilleController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
