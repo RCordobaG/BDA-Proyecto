@@ -24,39 +24,7 @@
             {{ session('status') }}
         </div>
         @endif
-        <form action="{{ route('crearMedico.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Matricula:</strong>
-                        <input type="text" name="MATRICULA" class="form-control" placeholder="Tipo de estudio">
-                        @error('MATRICULA')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Nombre:</strong>
-                        <input type="text" name="Nombre" class="form-control" placeholder="Paciente #">
-                        @error('Nombre')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Foto:</strong>
-                        <input type="file" name="Foto" class="form-control" placeholder="Archivo">
-                        @error('Foto')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary ml-3">Submit</button>
-            </div>
-        </form>
+        
     </div>
 </body>
 

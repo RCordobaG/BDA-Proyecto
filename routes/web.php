@@ -33,8 +33,5 @@ Route::resource('pacientes', PacientesController::class);
 Route::get('GuilleHealing',[GuilleController::class,'getImage']);
 Route::resource('GuilleHealing', GuilleController::class);
 Auth::routes();
-Route::resource('crearEstudio',CrearEstudiosController::class);
-Route::resource('crearMedico',CrearMedicosController::class);
-Route::resource('crearPaciente',CrearPacientesController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -30,7 +30,14 @@ class MedicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'MATRICULA' => 'required',
+            'Nombre' => 'required',
+            'Especialidad'=>'required',
+        ]);
+        medico::create($request->post());
+        $getMedico=medico::latest()->get();
+        return view('medicos',['getMedico'=>$getMedico]);
     }
 
     /**
@@ -62,6 +69,8 @@ class MedicoController extends Controller
      */
     public function destroy(medico $medico)
     {
-        //
+        $medico->delete();
+        $getMedico=medico::latest()->get();
+        return view('medicos',['getMedico'=>$getMedico]);
     }
 }

@@ -42,7 +42,8 @@ class EstudiosController extends Controller
         
 
         estudio::create($request->post());
-        return redirect()->route('estudios')->with('success','Estudio Has Been updated successfully');
+        $estudios=estudio::latest()->get();
+        return view('estudios',['estudios'=>$estudios]);
     }
 
     /**
