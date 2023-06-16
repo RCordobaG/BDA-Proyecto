@@ -12,10 +12,10 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left mb-2">
-                    <h2>Add Company</h2>
+                    <h2>Crear Medico</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('crearEstudio.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="/medico"> Back</a>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <strong>Nombre:</strong>
                         <input type="text" name="Nombre" class="form-control" placeholder="Paciente #">
-                        @error(Nombre')
+                        @error('Nombre')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>

@@ -21,7 +21,7 @@ class CrearEstudiosController extends Controller
      */
     public function create()
     {
-        return view('CrearEstudios.create');
+        return view('CrearEstudio.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class CrearEstudiosController extends Controller
      */
     public function show(CrearEstudiosModel $CrearEstudiosModel)
     {
-        return view('estudios.show');
+        return view('crearEstudio.show');
     }
 
     /**
@@ -70,7 +70,8 @@ class CrearEstudiosController extends Controller
      */
     public function destroy(CrearEstudiosModel $CrearEstudiosModel)
     {
-        //
+        $CrearEstudiosModel->delete();
+        return redirect()->route('crearEstudio.index')->with('success','Registro eliminado');
     }
 
 }

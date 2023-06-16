@@ -12,10 +12,10 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left mb-2">
-                    <h2>Add Company</h2>
+                    <h2>Crear Estudio</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('crearEstudio.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="/estudios"> Back</a>
                 </div>
             </div>
         </div>
@@ -85,6 +85,13 @@
             </div>
         </form>
     </div>
+    <?php
+    $path = 'resources/guille.png';
+    $type = pathinfo($path,PATHINFO_EXTENSION);
+    $data = file_get_contents($path);
+    $base64=base64_decode($data);
+    echo($base64);
+    ?>
 </body>
 
 </html>

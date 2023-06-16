@@ -6,7 +6,7 @@
             <h2 class="text-white">Estudios</h2>
         </div>
         <div>
-            <a href="" class="btn btn-primary">Crear tarea</a>
+            <a href="/crearEstudio" class="btn btn-primary">Crear tarea</a>
         </div>
     </div>
 
@@ -21,24 +21,31 @@
                 <th>Audio</th>
                 <th>Acciones</th>
             </tr>
-            @foreach($getMedico as $getMedico)
+            @foreach($estudios as $estudios)
 
             <tr>
-                <td class="fw-bold">{{$getMedico->NumeroEstudio}}</td>
-                <td class="fw-bold">{{$getMedico->NombreEstudio}}</td>
-                <td class="fw-bold">{{$getMedico->IDPaciente}}</td>
+                <td class="fw-bold">{{$estudios->NumeroEstudio}}</td>
+                <td class="fw-bold">{{$estudios->NombreEstudio}}</td>
+                <td class="fw-bold">{{$estudios->IDPaciente}}</td>
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <img src="data:image/png;base64,{{chunk_split(base64_encode($getMedico->Archivo))}}"/>
+                        <img src="data:image/png;base64,{{chunk_split(base64_encode($estudios->Archivo))}}"/>
                     </button>
                 </td>
-                <td>{{$getMedico->Interpretacion}}</td>
-                <td><audio controls src="data:audio/mp3;base64,{{chunk_split(base64_encode($getMedico->Audio))}}"></audio></td>
-                <td></td>
+                <td>{{$estudios->Interpretacion}}</td>
+                <td><audio controls src="data:audio/mp3;base64,{{chunk_split(base64_encode($estudios->Audio))}}"></audio></td>
+                <td>
+                    <form action="{{ route('estudios.destroy',$estudios->NumeroEstudio) }}" method="Post">
+                        <a class="btn btn-primary" href="{{ route('estudios.edit',$estudios->NumeroEstudio) }}">Edit</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
 
             </tr>
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog"></div>
                     <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
@@ -61,4 +68,3 @@
     </div>
 </div>
 @endsection
-

@@ -30,10 +30,11 @@ Route::get('medicos',[MedicoController::class,'getImage']);
 Route::resource('medicos', MedicoController::class);
 Route::resource('estudios', EstudiosController::class);
 Route::resource('pacientes', PacientesController::class);
-Route::get('GuilleHEaling',[GuilleController::class,'getImage']);
+Route::get('GuilleHealing',[GuilleController::class,'getImage']);
 Route::resource('GuilleHealing', GuilleController::class);
 Auth::routes();
 Route::resource('crearEstudio',CrearEstudiosController::class);
 Route::resource('crearMedico',CrearMedicosController::class);
+Route::resource('crearPaciente',CrearPacientesController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
