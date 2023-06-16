@@ -12,7 +12,8 @@ class CrearPacientesController extends Controller
      */
     public function index()
     {
-        //
+        $pacientes=CrearPacientesModel::latest()->get();
+        return view('crearPaciente',['crearPaciente'=>$pacientes]);
     }
 
     /**
@@ -20,7 +21,7 @@ class CrearPacientesController extends Controller
      */
     public function create()
     {
-        //
+        return view('crearPaciente.create');
     }
 
     /**
@@ -28,7 +29,14 @@ class CrearPacientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'ID' => 'required',
+            'Nombre' => 'required',
+            'Direccion'=>'required',
+            'email'=>'email',
+        ]);
+        CrearPacientesModel::create($request->post());
+        return redirect()->route('crearPaciente.index')->with('success','Pacientes creado');
     }
 
     /**
@@ -36,7 +44,7 @@ class CrearPacientesController extends Controller
      */
     public function show(CrearPacientesModel $crearPacientesModel)
     {
-        //
+        return view('crearPaciente.show');
     }
 
     /**
@@ -44,7 +52,7 @@ class CrearPacientesController extends Controller
      */
     public function edit(CrearPacientesModel $crearPacientesModel)
     {
-        //
+        return view('crearEstudio.edit');
     }
 
     /**
@@ -60,6 +68,7 @@ class CrearPacientesController extends Controller
      */
     public function destroy(CrearPacientesModel $crearPacientesModel)
     {
-        //
+        $CrearPacientesModel->delete();
+        return redirect()->route('crearEstudio.index')->with('success','Registro eliminado');
     }
 }

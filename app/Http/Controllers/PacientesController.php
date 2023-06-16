@@ -12,8 +12,8 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        $getMedico=paciente::latest()->get();
-        return view('paciente',['getMedico'=>$getMedico]);
+        $pacientes=paciente::latest()->get();
+        return view('pacientes',['pacientes'=>$pacientes]);
     }
 
     /**
@@ -29,7 +29,16 @@ class PacientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Nombre'=>'required',
+            'Direccion'=>'required',
+            'email'=>'required',
+        ]);
+        
+
+        paciente::create($request->post());
+        $pacientes=paciente::latest()->get();
+        return view('pacientes',['pacientes'=>$pacientes]);
     }
 
     /**
@@ -53,7 +62,15 @@ class PacientesController extends Controller
      */
     public function update(Request $request, paciente $paciente)
     {
-        //
+        $request->validate([
+            'Nombre'=>'required',
+            'Direccion'=>'required',
+            'email'=>'required',
+        ]);
+
+        $paciente->fill($request->post())->save();
+        $pacientes=paciente::latest()->get();
+        return view('pacientes',['pacientes'=>$pacientes]);
     }
 
     /**
@@ -61,6 +78,8 @@ class PacientesController extends Controller
      */
     public function destroy(paciente $paciente)
     {
-        //
+        $paciente->delete();
+        $pacientes=paciente::latest()->get();
+        return view('pacientes',['pacientes'=>$pacientes]);
     }
 }

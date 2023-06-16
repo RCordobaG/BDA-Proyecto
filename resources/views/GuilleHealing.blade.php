@@ -35,9 +35,10 @@
                     <audio controls src="data:audio/mp3;base64,{{chunk_split(base64_encode($getMedico->Foto))}}"></audio>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$getMedico->MATRICULA}}">
-                        Launch static backdrop modal for {{$getMedico->MATRICULA}}
-                    </button>
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$getMedico->MATRICULA}}">
+                Launch static backdrop modal {{$getMedico->MATRICULA}}
+                </button>
                 </td>
             </tr>
 

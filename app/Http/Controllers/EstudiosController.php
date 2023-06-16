@@ -12,8 +12,12 @@ class EstudiosController extends Controller
      */
     public function index()
     {
-        $getMedico=estudio::latest()->get();
-        return view('estudios',['getMedico'=>$getMedico]);
+        $estudios=estudio::latest()->get();
+        return view('estudios',['estudios'=>$estudios]);
+
+        // $estudios = estudio::orderBy('NumeroEstudio','desc');
+        // return view('estudios',['estudios'=>$estudios]);
+        
     }
 
     /**
@@ -21,7 +25,7 @@ class EstudiosController extends Controller
      */
     public function create()
     {
-        //
+        return view('estudios.create');
     }
 
     /**
@@ -29,7 +33,17 @@ class EstudiosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'NombreEstudio'=>'required',
+            'IDPaciente'=>'required',
+            'Archivo'=>'required',
+            'Interpretacion'=>'required',
+        ]);
+        
+
+        estudio::create($request->post());
+        $estudios=estudio::latest()->get();
+        return view('estudios',['estudios'=>$estudios]);
     }
 
     /**
@@ -37,7 +51,7 @@ class EstudiosController extends Controller
      */
     public function show(estudio $estudio)
     {
-        //
+        return view('estudios');
     }
 
     /**
@@ -45,7 +59,7 @@ class EstudiosController extends Controller
      */
     public function edit(estudio $estudio)
     {
-        //
+        return view('estudios');
     }
 
     /**
@@ -61,6 +75,10 @@ class EstudiosController extends Controller
      */
     public function destroy(estudio $estudio)
     {
-        //
+        $estudio->delete();
+        $estudios=estudio::latest()->get();
+        return view('estudios',['estudios'=>$estudios]);
+
+        //return redirect()->route('estudios')->with('success','Registro eliminado');
     }
 }

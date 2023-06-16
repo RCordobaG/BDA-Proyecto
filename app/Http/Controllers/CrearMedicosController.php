@@ -12,7 +12,8 @@ class CrearMedicosController extends Controller
      */
     public function index()
     {
-        //
+        $medicos=CrearMedicosModel::latest()->get();
+        return view('crearMedico',['crearMedico'=>$medicos]);
     }
 
     /**
@@ -20,7 +21,7 @@ class CrearMedicosController extends Controller
      */
     public function create()
     {
-        //
+        return view('crearMedico.create');
     }
 
     /**
@@ -28,7 +29,12 @@ class CrearMedicosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'MATRICULA' => 'required',
+            'Nombre' => 'required',
+        ]);
+        CrearMedicosModel::create($request->post());
+        return redirect()->route('crearMedico.index')->with('success','Medico creado');
     }
 
     /**
@@ -36,7 +42,7 @@ class CrearMedicosController extends Controller
      */
     public function show(CrearMedicosModel $crearMedicosModel)
     {
-        //
+        return view('crearMedico.show');
     }
 
     /**
@@ -60,6 +66,7 @@ class CrearMedicosController extends Controller
      */
     public function destroy(CrearMedicosModel $crearMedicosModel)
     {
-        //
+        $CrearMedicosModel->delete();
+        return redirect()->route('crearEstudio.index')->with('success','Registro eliminado');
     }
 }
