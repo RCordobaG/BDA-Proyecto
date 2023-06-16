@@ -41,8 +41,8 @@ class EstudiosController extends Controller
         ]);
         
 
-        CrearEstudiosModel::create($request->post());
-        return redirect()->route('crearEstudio.index')->with('success','Estudio Has Been updated successfully');
+        estudio::create($request->post());
+        return redirect()->route('estudios')->with('success','Estudio Has Been updated successfully');
     }
 
     /**
