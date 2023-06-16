@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CrearEstudiosModel extends Model
 {
     use HasFactory;
+    protected $table = 'estudios';
+    protected $fillable = ['NombreEstudio','IDPaciente','Archivo','Interpretacion','Audio','Video'];
 }

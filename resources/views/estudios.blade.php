@@ -29,7 +29,7 @@
                 <td class="fw-bold">{{$getMedico->IDPaciente}}</td>
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <img src="data:image/png;base64,{{chunk_split(base64_encode($getMedico->Imagen))}}"/>
+                        <img src="data:image/png;base64,{{chunk_split(base64_encode($getMedico->Archivo))}}"/>
                     </button>
                 </td>
                 <td>{{$getMedico->Interpretacion}}</td>

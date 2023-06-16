@@ -12,7 +12,8 @@ class CrearEstudiosController extends Controller
      */
     public function index()
     {
-        //
+        $estudios=CrearEstudiosModel::latest()->get();
+        return view('crearEstudio',['crearEstudio'=>$estudios]);
     }
 
     /**
@@ -20,7 +21,7 @@ class CrearEstudiosController extends Controller
      */
     public function create()
     {
-        //
+        return view('CrearEstudios.create');
     }
 
     /**
@@ -28,29 +29,38 @@ class CrearEstudiosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'NombreEstudio'=>'required',
+            'IDPaciente'=>'required',
+            'Archivo'=>'required',
+            'Interpretacion'=>'required',
+        ]);
+        
+
+        CrearEstudiosModel::create($request->post());
+        return redirect()->route('crearEstudio.index')->with('success','Estudio Has Been updated successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CrearEstudiosModel $crearEstudiosModel)
+    public function show(CrearEstudiosModel $CrearEstudiosModel)
     {
-        //
+        return view('estudios.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CrearEstudiosModel $crearEstudiosModel)
+    public function edit(CrearEstudiosModel $CrearEstudiosModel)
     {
-        //
+        return view('estudios.edit');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CrearEstudiosModel $crearEstudiosModel)
+    public function update(Request $request, CrearEstudiosModel $CrearEstudiosModel)
     {
         //
     }
@@ -58,8 +68,9 @@ class CrearEstudiosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CrearEstudiosModel $crearEstudiosModel)
+    public function destroy(CrearEstudiosModel $CrearEstudiosModel)
     {
         //
     }
+
 }

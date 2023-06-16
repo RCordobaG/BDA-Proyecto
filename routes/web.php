@@ -28,13 +28,12 @@ Route::get('/', function () {
 Route::resource('index', HospitalController::class);
 Route::get('medicos',[MedicoController::class,'getImage']);
 Route::resource('medicos', MedicoController::class);
-Route::resource('crearMedicos', CrearMedicosController::class);
 Route::resource('estudios', EstudiosController::class);
-Route::resource('crearEstudios', CrearEstudiosController::class);
 Route::resource('pacientes', PacientesController::class);
-Route::resource('crearPacientes', CrearPacientesController::class);
 Route::get('GuilleHEaling',[GuilleController::class,'getImage']);
 Route::resource('GuilleHealing', GuilleController::class);
 Auth::routes();
+Route::resource('crearEstudio',CrearEstudiosController::class);
+Route::resource('crearMedico',CrearMedicosController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

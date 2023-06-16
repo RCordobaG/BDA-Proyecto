@@ -20,7 +20,7 @@ class CrearMedicosController extends Controller
      */
     public function create()
     {
-        //
+        return view('crearMedico.create');
     }
 
     /**
@@ -28,7 +28,12 @@ class CrearMedicosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'MATRICULA' => 'required',
+            'Nombre' => 'required',
+        ]);
+        CrearMedicosModel::create($request->post());
+        return redirect()->route('medico')->with('success','Medico creado');
     }
 
     /**
