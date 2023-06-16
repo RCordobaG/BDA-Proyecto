@@ -12,3 +12,5 @@ class paciente extends Model
     protected $fillable = ['ID','Nombre','Direccion','Telefono','email','Foto'];
     protected $primaryKey='ID';
 }
+
+

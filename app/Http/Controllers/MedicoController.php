@@ -35,6 +35,7 @@ class MedicoController extends Controller
             'Nombre' => 'required',
             'Especialidad'=>'required',
         ]);
+        
         medico::create($request->post());
         $getMedico=medico::latest()->get();
         return view('medicos',['getMedico'=>$getMedico]);
