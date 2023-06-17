@@ -185,7 +185,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Foto:</strong>
-                            <input type="text" value = "" name="Foto" id = "Foto" class="mole" placeholder="Archivo">
+                            <input type="text" value = "" name="Archivo" id = "Foto" class="mole" placeholder="Archivo">
                             @error('Foto')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror

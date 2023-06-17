@@ -12,8 +12,8 @@ class EstudiosController extends Controller
      */
     public function index()
     {
-        $getMedico=estudio::latest()->get();
-        return view('estudios',['getMedico'=>$getMedico]);
+        $estudios=estudio::latest()->get();
+        return view('estudios',['estudios'=>$estudios]);
     }
 
     /**
@@ -29,7 +29,31 @@ class EstudiosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'NombreEstudio'=>'required',
+            'IDPaciente'=>'required',
+            'Interpretacion'=>'required',
+        ]);
+        
+        // echo $request;
+
+            
+        // //Get the image and convert into string
+        // $path = $request->input('Foto');
+        // //$type = pathinfo($path,PATHINFO_EXTENSION);
+        // $img = file_get_contents($path);
+        
+            
+        // // Encode the image string data into base64
+        // $data = base64_encode($img);
+        // $newData = mb_convert_encoding($data,"binary");
+            
+        // // Display the output
+        // echo $data;
+
+        estudio::create($request->post());
+        $estudios=estudio::latest()->get();
+        return view('estudios',['estudios'=>$estudios]);
     }
 
     /**
@@ -53,7 +77,15 @@ class EstudiosController extends Controller
      */
     public function update(Request $request, estudio $estudio)
     {
-        //
+        $request->validate([
+            'NombreEstudio'=>'required',
+            'IDPaciente'=>'required',
+            'Interpretacion'=>'required',
+        ]);
+
+        $estudio->fill($request->post())->save();
+        $estudios=estudio::latest()->get();
+        return view('estudios',['estudios'=>$estudios]);
     }
 
     /**
@@ -61,6 +93,8 @@ class EstudiosController extends Controller
      */
     public function destroy(estudio $estudio)
     {
-        //
+        $estudio->delete();
+        $estudios=estudio::latest()->get();
+        return view('estudios',['estudios'=>$estudios]);
     }
 }
