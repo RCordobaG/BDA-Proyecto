@@ -1,5 +1,6 @@
 @extends ('layout.base')
 @section ('content')
+<meta charset = "UTF-8">
 <div class="row">
     <div class="col-12">
         <div>
@@ -31,12 +32,12 @@
                 <td class="fw-bold">{{$estudios->IDPaciente}}</td>
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$estudios->NumeroEstudio}}">
-                        <img src="{{(base64_encode($estudios->Archivo))}}">
+                        <img src="{{$estudios->Archivo}}">
                     </button>
                 </td>
                 <td>{{$estudios->Interpretacion}}</td>
-                <td><audio controls src="data:audio/mp3;base64,{{chunk_split(base64_encode($estudios->Audio))}}"></audio></td>
-                <td><video controls src="data:audio/mp3;base64,{{chunk_split(base64_encode($estudios->Audio))}}"></video></td>
+                <td><audio controls src="{{$estudios->Audio}}"></audio></td>
+                <td><video controls src="{{$estudios->Audio}}"></video></td>
                 <td>    
                 <form action="{{ route('estudios.destroy',$estudios->NumeroEstudio) }}" method="Post">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarModal{{$estudios->NumeroEstudio}}">Editar</button>
@@ -185,7 +186,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Foto:</strong>
-                            <input type="text" value = "" name="Archivo" id = "Foto" class="mole" placeholder="Archivo">
+                            <input type="text" name="Archivo" id = "Foto" class="mole" placeholder="Archivo">
                             @error('Foto')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror
